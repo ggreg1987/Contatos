@@ -1,12 +1,14 @@
 package br.com.lista.contato.model;
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import org.hibernate.annotations.ForeignKey;
 
+@SuppressWarnings("deprecation")
 @Entity
 public class Telefone implements Serializable {
 
@@ -18,6 +20,10 @@ public class Telefone implements Serializable {
 
 	private String numero;
 	private String tipo;
+
+	@ManyToOne
+	@ForeignKey(name = "pessoa_id")
+	private Pessoa pessoa;
 
 	public Telefone() {
 
