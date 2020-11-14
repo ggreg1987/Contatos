@@ -58,4 +58,14 @@ public class Telefone implements Serializable {
 		this.tipo = tipo;
 	}
 
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+	
+	
+
 }

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<div th:each="pessoa : ${objpessoa}">
+			<p>
+				ID: <span th:text="${pessoa.id}"></span>
+			</p>
+			<p>
+				Nome: <span th:text="${pessoa.nome}"></span>
+			</p>
+			<p>
+				Idade: <span th:text="${pessoa.idade}"></span>
+			</p>
+		</div>
+		
+		<div>
+			<form th:action="@{/salvarfone/{pessoaid}(pessoaid=${objpessoa.id})}" method="post" onsubmit="return validarFone() ? true : false">
+				
+			
+				<label>Número: </label>
+				<input type="number" name="numero" id="numero" >
+				
+				<label>Tipo: </label>
+				<input name="tipo" id="tipo" >
+				
+				<input type="submit" value="Salvar" >					
+			</form>
+
+			<div th:each="msg : ${msg}">
+				<span th:text="${msg}"></span>
+			</div>
+
+
+			<table>
+				<thead>
+					<tr>
+						<th>Número</th>
+						<th>Tipo</th>
+						<th>Excluir</th>
+					</tr>
+				</thead>
+
+				<tr th:each = "telefone : ${telefones}">
+					<td th:text="${telefone.numero}"></td>
+					<td th:text="${telefone.tipo}"></td>
+					<td><a th:href="@{/excluirfone/{idfone}(idfone=${telefone.id})}">Excluir</a></td>
+				</tr>
+			</table>
+
+
+		</div>		
+		
+	</div>
+
+	<script type="text/javascript">
+		function validarFone() {
+			numero = document.getElementById('numero').value;
+			tipo = document.getElementById('tipo').value;
+
+			if (numero === "" || tipo === "") {
+				alert('Preencha os Campos corretamente!');
+				return false;
+			}
+			return true;
+		}
+	</script>
+</body>
+</html>
