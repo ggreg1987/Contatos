@@ -1,2 +1,2 @@
 # contatos
-backend feito  com Spring MVC + Thymeleaf e Spring Security
+backend feito  com Spring MVC + Thymeleaf , Spring Security e JavaScript
